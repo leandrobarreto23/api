@@ -4,8 +4,16 @@ const express = require("express");
 // inicializando o express para ser utilizado
 const app = express();
 
-app.get("/message", (request, response) => {
-  response.send("Hellow, world!")
+//criacao de rota com método GET
+//para criar um parametro voce precisa inserir na rota ":/nomedoparamerto"
+app.get("/message/:id/:user", (request, response) => {
+  //desestruturar o request.params
+  const { id, user } = request.params
+
+  response.send(`
+    Id da mensagem: ${id}.
+    Para o usuário: ${user}
+  `)
 })
 
 // crio uma porta que o express vai ficar observando como se fosse um porteiro
