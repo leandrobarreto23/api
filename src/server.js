@@ -13,7 +13,7 @@ app.get("/message/:id/:user", (request, response) => {
   response.send(`
     Id da mensagem: ${id}.
     Para o usuário: ${user}
-  `)
+  `);
 });
 
 //criacao de rota com método GET usando Query Params
@@ -21,7 +21,7 @@ app.get("/message/:id/:user", (request, response) => {
 app.get("/users", (request, response) => {
   const {page, limit} = request.query;
 
-  response.send(`Página: ${page}. Mostrar: ${limit}`)
+  response.send(`Página: ${page}. Mostrar: ${limit}`);
 });
 
 // crio uma porta que o express vai ficar observando como se fosse um porteiro
