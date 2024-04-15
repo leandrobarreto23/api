@@ -4,8 +4,8 @@ const express = require("express");
 // inicializando o express para ser utilizado
 const app = express();
 
-//criacao de rota com método GET
-//para criar um parametro voce precisa inserir na rota ":/nomedoparamerto"
+//criacao de rota com método GET usando o Route Params
+//para criar um parametro voce precisa inserir na rota "/:nomedoparamerto"
 app.get("/message/:id/:user", (request, response) => {
   //desestruturar o request.params
   const { id, user } = request.params
@@ -14,7 +14,15 @@ app.get("/message/:id/:user", (request, response) => {
     Id da mensagem: ${id}.
     Para o usuário: ${user}
   `)
-})
+});
+
+//criacao de rota com método GET usando Query Params
+///users?page=5&limit=10
+app.get("/users", (request, response) => {
+  const {page, limit} = request.query;
+
+  response.send(`Página: ${page}. Mostrar: ${limit}`)
+});
 
 // crio uma porta que o express vai ficar observando como se fosse um porteiro
 const PORT = 3333;
